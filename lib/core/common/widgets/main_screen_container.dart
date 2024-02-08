@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:pamelo_fruit_scan_app_fluttet_cnn/core/res/colours.dart';
+import 'package:weather_app/core/res/colours.dart';
 
 class MainScreenContainer extends StatelessWidget {
   const MainScreenContainer({

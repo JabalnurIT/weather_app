@@ -1,4 +1,4 @@
-# pamelo_fruit_scan_app_fluttet_cnn
+# weather_app
 
 A new Flutter project.
 

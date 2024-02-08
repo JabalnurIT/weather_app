@@ -1,4 +1,4 @@
-package com.example.pamelo_fruit_scan_app_fluttet_cnn
+package com.example.weather_app
 
 import io.flutter.embedding.android.FlutterActivity
 

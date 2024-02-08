@@ -1,6 +1,6 @@
 {
-    "name": "pamelo_fruit_scan_app_fluttet_cnn",
-    "short_name": "pamelo_fruit_scan_app_fluttet_cnn",
+    "name": "weather_app",
+    "short_name": "weather_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
