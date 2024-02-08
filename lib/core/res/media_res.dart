@@ -54,7 +54,7 @@ class MediaRes {
   // static const splashBackground = '$_baseImages/color_background.jpg';
 
   // Objects
-  // static const itemExample = '$_baseImages/item_example.png';
+  static const houseImage = '$_baseImages/house.png';
   // static const saminkuLogo = '$_baseImages/saminku.png';
   // static const saminkuMascot = '$_baseImages/saminku_mascot.PNG';
 

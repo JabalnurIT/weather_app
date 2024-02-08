@@ -38,6 +38,8 @@ dependencies:
   list_wheel_scroll_view_nls: ^0.0.3
   glassmorphism: ^3.0.0
   animated_splash_screen: ^1.3.0
+  animated_bottom_navigation_bar: ^1.3.3
+  fluttericon: ^2.0.0
 
 dev_dependencies:
   flutter_test:

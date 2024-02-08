@@ -9,11 +9,11 @@ class Colours {
     Color(0xFFFDFAD1),
   ];
 
-  static const Color primaryColour = Color(0xFF494242);
+  static const Color primaryColour = Color(0xFF48319D);
 
-  static const Color secondaryColour = Color(0xFFB27A60);
+  static const Color secondaryColour = Color(0xFFFDFAF6);
 
-  static const Color tertiaryColour = Color(0xFFEAC7BB);
+  static const Color tertiaryColour = Color(0xFF7582F4);
 
   static const Color primaryColourDisabled = Color(0x80494242);
 
@@ -25,9 +25,9 @@ class Colours {
 
   static const Color accentDarkerColourDisabled = Color(0x8041926A);
 
-  static const Color accentColour = Color(0xFF45A779);
+  static const Color accentColour = Color.fromARGB(255, 34, 28, 57);
 
-  static const Color accentColourDisabled = Color(0x8045A779);
+  static const Color accentColourDisabled = Color(0x80EEE0B1);
 
   static const Color accentLighterColour = Color.fromARGB(255, 111, 236, 178);
 
@@ -37,9 +37,9 @@ class Colours {
 
   static const Color neutralColourDisabled = Color(0x80FDFAF6);
 
-  static const Color whiteColour = Color(0xFFD9D9D9);
+  static const Color whiteColour = Color(0xFFFFFFFF);
 
-  static const Color whiteColourDisabled = Color(0x80D9D9D9);
+  static const Color whiteColourDisabled = Color(0x80FFFFFF);
 
   static const Color blackColour = Color(0xFF000000);
 

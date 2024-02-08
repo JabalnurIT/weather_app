@@ -40,6 +40,6 @@ Future<void> _initCore({
 
 Future<void> _initScanner() async {
   sl.registerFactory(
-    () => ScannerBloc(),
+    () => WeatherBloc(),
   );
 }
