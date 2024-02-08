@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Pamelo Fruit Scanner',
+        title: 'Weather App',
         theme: ThemeData(
           useMaterial3: true,
           visualDensity: VisualDensity.adaptivePlatformDensity,
