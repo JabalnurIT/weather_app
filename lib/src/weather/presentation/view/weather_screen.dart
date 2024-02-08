@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttericon/meteocons_icons.dart';
 import 'package:weather_app/core/common/widgets/main_floating_action_button.dart';
 import 'package:weather_app/core/res/media_res.dart';
+import 'package:weather_app/src/weather/presentation/view/weather_item.dart';
+import 'package:weather_app/src/weather/presentation/widgets/button_weather.dart';
 import '../../../../core/common/widgets/main_navbar.dart';
 import '../../../../core/common/widgets/main_screen_container.dart';
 import '../../../../core/common/widgets/main_text.dart';
@@ -50,13 +52,54 @@ class _WeatherScreenState extends State<WeatherScreen> {
             },
           ),
           heightSheet: MediaQuery.of(context).size.height * .42,
-          bottomSheet: const Column(
+          bottomSheet: Column(
             children: [
-              MainText(
-                'Pamelo Fruit Weather',
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colours.whiteColour,
+              Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colours.accentColour.withOpacity(0.5),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ButtonWeather(
+                      title: 'Hourly Forecast',
+                      selected: false,
+                      onTap: () {
+                        print('Hourly Forecast');
+                      },
+                    ),
+                    ButtonWeather(
+                      title: 'Weekly Forecast',
+                      selected: true,
+                      onTap: () {
+                        print('Weekly Forecast');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 140,
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 7,
+                  itemBuilder: (context, index) {
+                    return WeatherItem(
+                      selected: index == 1,
+                      title: index == 1 ? 'Now' : 'Monday',
+                      temperature: '19',
+                    );
+                  },
+                ),
               ),
             ],
           ),

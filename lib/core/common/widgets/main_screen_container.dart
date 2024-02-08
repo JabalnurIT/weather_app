@@ -1,8 +1,5 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttericon/meteocons_icons.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:weather_app/core/common/widgets/main_navbar.dart';
 import 'package:weather_app/core/res/colours.dart';
 
 import '../../res/media_res.dart';
