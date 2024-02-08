@@ -2,12 +2,12 @@ part of 'router.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case WeatherScreen.routeName:
+    case HomeScreen.routeName:
       return _pageBuilder(
         (_) => SplashScreen(
           nextScreen: BlocProvider(
-            create: (_) => sl<WeatherBloc>(),
-            child: const WeatherScreen(),
+            create: (_) => sl<HomeBloc>(),
+            child: const HomeScreen(),
           ),
         ),
         settings: settings,

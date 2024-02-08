@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttericon/meteocons_icons.dart';
-import 'package:weather_app/core/common/widgets/main_floating_action_button.dart';
-import 'package:weather_app/core/res/media_res.dart';
-import 'package:weather_app/src/weather/presentation/view/weather_item.dart';
-import 'package:weather_app/src/weather/presentation/widgets/button_weather.dart';
+import '../../../../core/common/widgets/main_floating_action_button.dart';
 import '../../../../core/common/widgets/main_navbar.dart';
 import '../../../../core/common/widgets/main_screen_container.dart';
 import '../../../../core/common/widgets/main_text.dart';
 import '../../../../core/res/colours.dart';
-import '../bloc/weather_bloc.dart';
+import '../../../../core/res/media_res.dart';
+import '../bloc/home_bloc.dart';
+import '../widgets/button_home.dart';
+import 'home_item.dart';
 
-class WeatherScreen extends StatefulWidget {
-  const WeatherScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   static const routeName = '/';
 
   @override
-  State<WeatherScreen> createState() => _WeatherScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _WeatherScreenState extends State<WeatherScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
@@ -28,7 +28,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<WeatherBloc, WeatherState>(
+    return BlocConsumer<HomeBloc, HomeState>(
       listener: (context, state) {
         // TODO: implement listener
       },
@@ -66,14 +66,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ButtonWeather(
+                    ButtonHome(
                       title: 'Hourly Forecast',
                       selected: false,
                       onTap: () {
                         print('Hourly Forecast');
                       },
                     ),
-                    ButtonWeather(
+                    ButtonHome(
                       title: 'Weekly Forecast',
                       selected: true,
                       onTap: () {
@@ -93,7 +93,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 7,
                   itemBuilder: (context, index) {
-                    return WeatherItem(
+                    return HomeItem(
                       selected: index == 1,
                       title: index == 1 ? 'Now' : 'Monday',
                       temperature: '19',

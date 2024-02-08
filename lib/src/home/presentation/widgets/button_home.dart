@@ -4,8 +4,8 @@ import 'package:weather_app/core/res/fonts.dart';
 import '../../../../core/common/widgets/main_text.dart';
 import '../../../../core/res/colours.dart';
 
-class ButtonWeather extends StatelessWidget {
-  const ButtonWeather({
+class ButtonHome extends StatelessWidget {
+  const ButtonHome({
     super.key,
     this.height,
     this.width,

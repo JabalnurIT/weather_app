@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/main_text.dart';
 import '../../../../core/res/colours.dart';
 
-class WeatherItem extends StatelessWidget {
-  const WeatherItem({
+class HomeItem extends StatelessWidget {
+  const HomeItem({
     super.key,
     required this.title,
     required this.temperature,
