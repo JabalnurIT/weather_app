@@ -128,9 +128,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: 7,
                   itemBuilder: (context, index) {
                     return HomeItem(
-                      selected: index == 1,
-                      title: index == 1 ? 'Now' : 'Monday',
+                      selected: index == 0,
+                      title: index == 0 ? 'Now' : 'Monday',
                       temperature: '19',
+                      icon:
+                          'https://cdn.weatherapi.com/weather/64x64/day/113.png',
                     );
                   },
                 ),

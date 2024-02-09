@@ -9,11 +9,13 @@ class HomeItem extends StatelessWidget {
     required this.title,
     required this.temperature,
     required this.selected,
+    required this.icon,
   });
 
   final String title;
   final String temperature;
   final bool selected;
+  final String icon;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class HomeItem extends StatelessWidget {
         color: selected
             ? Colours.primaryColour
             : Colours.primaryColour.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Colours.whiteColour.withOpacity(0.5),
           width: 1,
@@ -48,11 +50,19 @@ class HomeItem extends StatelessWidget {
             color: Colours.whiteColour,
           ),
           const SizedBox(
+            height: 8,
+          ),
+          Image.network(
+            icon,
+            width: 40,
+            height: 40,
+          ),
+          const SizedBox(
             height: 10,
           ),
           MainText(
             '$temperature\u00B0',
-            fontSize: 32,
+            fontSize: 24,
             fontWeight: FontWeight.w300,
             color: Colours.whiteColour,
           ),
