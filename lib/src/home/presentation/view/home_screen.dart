@@ -201,7 +201,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   MainText(
-                    '${weatherProvider.currentWeather.temperatureCelsius}\u00B0',
+                    (weatherProvider.selectedTemperatureIndex == 0)
+                        ? '${weatherProvider.currentWeather.temperatureCelsius}\u00B0'
+                        : '${weatherProvider.currentWeather.temperatureFahrenheit}\u00B0',
                     fontSize: 98,
                     fontWeight: FontWeight.w300,
                     color: Colours.whiteColour,
