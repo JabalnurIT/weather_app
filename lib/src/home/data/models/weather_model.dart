@@ -16,41 +16,16 @@ class WeatherModel extends Weather {
 
   WeatherModel.empty()
       : this(
-          locationName: '',
-          latitude: 0,
-          longitude: 0,
-          temperatureCelsius: 0,
-          temperatureFahrenheit: 0,
-          weatherDescription: '',
-          weatherIcon: '',
-          date: DateTime.now(),
+          locationName: 'Surabaya',
+          latitude: -7.29,
+          longitude: 112.8,
+          temperatureCelsius: 6.1,
+          temperatureFahrenheit: 43.0,
+          weatherDescription: 'Clear',
+          weatherIcon: '//cdn.weatherapi.com/weather/64x64/night/113.png',
+          date: DateTime.parse("2024-02-01 00:00"),
           selectedWeather: false,
         );
-
-  WeatherModel copyWith({
-    String? locationName,
-    double? latitude,
-    double? longitude,
-    double? temperatureCelsius,
-    double? temperatureFahrenheit,
-    String? weatherDescription,
-    String? weatherIcon,
-    DateTime? date,
-    bool? selectedWeather,
-  }) {
-    return WeatherModel(
-      locationName: locationName ?? super.locationName,
-      latitude: latitude ?? super.latitude,
-      longitude: longitude ?? super.longitude,
-      temperatureCelsius: temperatureCelsius ?? super.temperatureCelsius,
-      temperatureFahrenheit:
-          temperatureFahrenheit ?? super.temperatureFahrenheit,
-      weatherDescription: weatherDescription ?? super.weatherDescription,
-      weatherIcon: weatherIcon ?? super.weatherIcon,
-      date: date ?? super.date,
-      selectedWeather: selectedWeather ?? super.selectedWeather,
-    );
-  }
 
   WeatherModel.fromMap(DataMap map)
       : super(

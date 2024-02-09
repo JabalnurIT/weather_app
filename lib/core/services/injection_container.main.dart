@@ -39,13 +39,19 @@ Future<void> _initHome() async {
     ..registerLazySingleton(() => GetCurrentWeather(sl()))
     ..registerLazySingleton(() => GetDailyForecast(sl()))
     ..registerLazySingleton(() => GetHourlyForecast(sl()))
-    ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()))
+    ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(
+          sl(),
+          sl(),
+        ))
     ..registerLazySingleton<HomeRemoteDataSource>(
       () => HomeRemoteDataSourceImpl(
         dio: sl(),
         api: sl(),
+      ),
+    )
+    ..registerLazySingleton<HomeLocalDataSource>(
+      () => HomeLocalDataSourceImpl(
         geolocator: sl(),
       ),
     );
-  ;
 }

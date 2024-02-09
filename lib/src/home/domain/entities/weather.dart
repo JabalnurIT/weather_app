@@ -8,7 +8,7 @@ class Weather extends Equatable {
   final double temperatureFahrenheit;
   final String weatherDescription;
   final String weatherIcon;
-  final DateTime date;
+  final DateTime? date;
   final bool selectedWeather;
 
   const Weather({
@@ -19,19 +19,19 @@ class Weather extends Equatable {
     required this.temperatureFahrenheit,
     required this.weatherDescription,
     required this.weatherIcon,
-    required this.date,
+    this.date,
     required this.selectedWeather,
   });
 
-  Weather.empty()
-      : locationName = '',
-        latitude = 0,
-        longitude = 0,
+  const Weather.empty()
+      : locationName = 'Surabaya',
+        latitude = -7.29,
+        longitude = 112.8,
         temperatureCelsius = 6.1,
         temperatureFahrenheit = 43.0,
         weatherDescription = 'Clear',
         weatherIcon = '//cdn.weatherapi.com/weather/64x64/night/113.png',
-        date = DateTime.now(),
+        date = null,
         selectedWeather = false;
 
   @override

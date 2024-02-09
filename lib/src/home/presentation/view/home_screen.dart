@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .hourlyForecast[index].selectedWeather
                                     ? 'Now'
                                     : CoreUtils.formattedTime(weatherProvider
-                                        .hourlyForecast[index].date),
+                                        .hourlyForecast[index].date!),
                                 temperature: (weatherProvider
                                             .selectedTemperatureIndex ==
                                         0)
@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .dailyForecast[index].selectedWeather
                                     ? 'Today'
                                     : CoreUtils.formattedDay(weatherProvider
-                                        .dailyForecast[index].date),
+                                        .dailyForecast[index].date!),
                                 temperature: (weatherProvider
                                             .selectedTemperatureIndex ==
                                         0)

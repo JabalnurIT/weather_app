@@ -7,7 +7,9 @@ sealed class HomeState extends Equatable {
   List<Object> get props => [];
 }
 
-final class HomeInitial extends HomeState {}
+final class HomeInitial extends HomeState {
+  const HomeInitial();
+}
 
 class HomeLoading extends HomeState {
   const HomeLoading();

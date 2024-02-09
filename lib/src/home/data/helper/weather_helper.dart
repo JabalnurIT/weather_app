@@ -31,7 +31,7 @@ class WeatherHelper {
       'weather_description': current['condition']['text'],
       'weather_icon': current['condition']['icon'],
       'date': DateTime.parse(current['last_updated']),
-      'selected_weather': true,
+      'selected_weather': false,
     };
   }
 

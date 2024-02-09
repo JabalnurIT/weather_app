@@ -1,0 +1,11 @@
+{
+    "location": "Surabaya",
+    "latitude": -7.29,
+    "longitude": 112.8,
+    "temperature_celsius": 6.1,
+    "temperature_fahrenheit": 43.0,
+    "weather_description": "Clear",
+    "weather_icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+    "date": "2024-02-01 00:00",
+    "selected_weather": false
+}

@@ -14,7 +14,7 @@ class LocationHelper {
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      return Future.error('Location services are disabled.');
+      return Future.error('Location services are disabled');
     }
 
     permission = await geolocator.checkPermission();

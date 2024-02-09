@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:weather_app/core/common/app/helper/location_helper.dart';
 import 'package:weather_app/core/utils/constanst.dart';
 import 'package:weather_app/src/home/data/helper/weather_helper.dart';
 
@@ -13,30 +12,32 @@ import '../models/weather_model.dart';
 abstract class HomeRemoteDataSource {
   const HomeRemoteDataSource();
 
-  Future<WeatherModel> getCurrentWeather();
-  Future<List<WeatherModel>> getDailyForecast();
-  Future<List<WeatherModel>> getHourlyForecast();
+  Future<WeatherModel> getCurrentWeather({
+    required Position currentLocation,
+  });
+  Future<List<WeatherModel>> getDailyForecast({
+    required Position currentLocation,
+  });
+  Future<List<WeatherModel>> getHourlyForecast({
+    required Position currentLocation,
+  });
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   const HomeRemoteDataSourceImpl({
     required Dio dio,
     required API api,
-    required GeolocatorPlatform geolocator,
   })  : _dio = dio,
-        _api = api,
-        _geolocator = geolocator;
+        _api = api;
 
   final Dio _dio;
   final API _api;
-  final GeolocatorPlatform _geolocator;
 
   @override
-  Future<WeatherModel> getCurrentWeather() async {
+  Future<WeatherModel> getCurrentWeather({
+    required Position currentLocation,
+  }) async {
     try {
-      final currentLocation = await LocationHelper.getCurrentLocation(
-        geolocator: _geolocator,
-      );
       final String latlong =
           "${currentLocation.latitude},${currentLocation.longitude}";
       final result = await _dio.get(
@@ -63,11 +64,10 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   }
 
   @override
-  Future<List<WeatherModel>> getDailyForecast() async {
+  Future<List<WeatherModel>> getDailyForecast({
+    required Position currentLocation,
+  }) async {
     try {
-      final currentLocation = await LocationHelper.getCurrentLocation(
-        geolocator: _geolocator,
-      );
       final String latlong =
           "${currentLocation.latitude},${currentLocation.longitude}";
       final result = await _dio.get(
@@ -94,11 +94,10 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   }
 
   @override
-  Future<List<WeatherModel>> getHourlyForecast() async {
+  Future<List<WeatherModel>> getHourlyForecast({
+    required Position currentLocation,
+  }) async {
     try {
-      final currentLocation = await LocationHelper.getCurrentLocation(
-        geolocator: _geolocator,
-      );
       final String latlong =
           "${currentLocation.latitude},${currentLocation.longitude}";
       final result = await _dio.get(
