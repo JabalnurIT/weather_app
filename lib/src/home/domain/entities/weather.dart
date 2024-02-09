@@ -9,6 +9,7 @@ class Weather extends Equatable {
   final String weatherDescription;
   final String weatherIcon;
   final DateTime date;
+  final bool selectedWeather;
 
   const Weather({
     required this.locationName,
@@ -19,17 +20,19 @@ class Weather extends Equatable {
     required this.weatherDescription,
     required this.weatherIcon,
     required this.date,
+    required this.selectedWeather,
   });
 
   Weather.empty()
       : locationName = '',
         latitude = 0,
         longitude = 0,
-        temperatureCelsius = 0,
-        temperatureFahrenheit = 0,
-        weatherDescription = '',
-        weatherIcon = '',
-        date = DateTime.now();
+        temperatureCelsius = 6.1,
+        temperatureFahrenheit = 43.0,
+        weatherDescription = 'Clear',
+        weatherIcon = '//cdn.weatherapi.com/weather/64x64/night/113.png',
+        date = DateTime.now(),
+        selectedWeather = false;
 
   @override
   List<Object?> get props => [
@@ -41,6 +44,7 @@ class Weather extends Equatable {
         weatherDescription,
         weatherIcon,
         date,
+        selectedWeather,
       ];
 
   @override
@@ -49,6 +53,6 @@ class Weather extends Equatable {
         'longitude: $longitude, temperatureCelsius: $temperatureCelsius, '
         'temperatureFahrenheit: $temperatureFahrenheit, '
         'weatherDescription: $weatherDescription, weatherIcon: $weatherIcon, '
-        'date: $date}';
+        'date: $date, selectedWeather: $selectedWeather}';
   }
 }

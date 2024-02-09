@@ -1,6 +1,6 @@
 import 'package:provider/provider.dart';
 
-import 'core/common/app/providers/file_provider.dart';
+import 'core/common/app/providers/weather_provider.dart';
 import 'core/services/injection_container.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => FileProvider()),
+        ChangeNotifierProvider(create: (_) => WeatherProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -7,9 +7,11 @@ class MainNavbar extends StatelessWidget {
     super.key,
     required this.icons,
     required this.onTap,
+    this.activeIndex = 0,
   });
 
   final List<IconData> icons;
+  final int activeIndex;
   final Function(int) onTap;
 
   @override
@@ -32,7 +34,7 @@ class MainNavbar extends StatelessWidget {
           Colours.accentColour.withOpacity(1),
         ],
       ),
-      activeIndex: 0,
+      activeIndex: activeIndex,
       gapLocation: GapLocation.center,
       notchSmoothness: NotchSmoothness.softEdge,
       onTap: onTap,

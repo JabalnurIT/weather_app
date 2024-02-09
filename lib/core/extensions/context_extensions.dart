@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../common/app/providers/file_provider.dart';
-import '../common/app/providers/tab_navigator.dart';
+import '../common/app/providers/weather_provider.dart';
 
 extension ContextExtensions on BuildContext {
   ThemeData get theme => Theme.of(this);
@@ -13,11 +11,5 @@ extension ContextExtensions on BuildContext {
   double get width => size.width;
   double get height => size.height;
 
-  FileProvider get fileProvider => read<FileProvider>();
-
-  TabNavigator get tabNavigator => read<TabNavigator>();
-
-  void pop() => tabNavigator.pop();
-
-  void push(Widget page) => tabNavigator.push(TabItem(child: page));
+  WeatherProvider get weatherProvider => read<WeatherProvider>();
 }

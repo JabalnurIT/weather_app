@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../res/colours.dart';
 
@@ -62,5 +63,23 @@ class CoreUtils {
           "data:image/${filePath.split('/').last.split('.').last};base64,$base64File";
     }
     return uriBase64;
+  }
+
+  static String formattedTime(DateTime dateTime) {
+    String formattedTime = DateFormat('hh a').format(dateTime);
+    if (formattedTime.startsWith('0')) {
+      formattedTime = formattedTime.substring(1);
+    }
+    // if hh is 12 then change it to 0
+    if (formattedTime.startsWith('12')) {
+      formattedTime = '0${formattedTime.substring(2)}';
+    }
+    return formattedTime;
+  }
+
+  static String formattedDay(DateTime dateTime) {
+    String formattedDay = DateFormat('EEE').format(dateTime);
+
+    return formattedDay;
   }
 }

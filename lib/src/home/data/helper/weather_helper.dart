@@ -31,10 +31,12 @@ class WeatherHelper {
       'weather_description': current['condition']['text'],
       'weather_icon': current['condition']['icon'],
       'date': DateTime.parse(current['last_updated']),
+      'selected_weather': true,
     };
   }
 
   static List<DataMap> extractDailyForecast(DataMap? map) {
+    final date = DateTime.now();
     if (map == null) {
       throw const ServerException(
           message: "Response data is null", statusCode: 505);
@@ -78,11 +80,13 @@ class WeatherHelper {
               'weather_description': e['day']['condition']['text'],
               'weather_icon': e['day']['condition']['icon'],
               'date': DateTime.parse(e['date']),
+              'selected_weather': date.day == DateTime.parse(e['date']).day
             })
         .toList();
   }
 
   static List<DataMap> extractHourlyForecast(DataMap? map) {
+    final date = DateTime.now();
     if (map == null) {
       throw const ServerException(
           message: "Response data is null", statusCode: 505);
@@ -121,7 +125,6 @@ class WeatherHelper {
             message: "Missing required columns from response", statusCode: 505);
       }
     }
-
     return forecastHour
         .map<DataMap>((e) => {
               'location': location['name'],
@@ -132,6 +135,7 @@ class WeatherHelper {
               'weather_description': e['condition']['text'],
               'weather_icon': e['condition']['icon'],
               'date': DateTime.parse(e['time']),
+              'selected_weather': date.hour == DateTime.parse(e['time']).hour
             })
         .toList();
   }

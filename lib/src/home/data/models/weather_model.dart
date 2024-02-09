@@ -11,6 +11,7 @@ class WeatherModel extends Weather {
     required super.weatherDescription,
     required super.weatherIcon,
     required super.date,
+    required super.selectedWeather,
   });
 
   WeatherModel.empty()
@@ -23,6 +24,7 @@ class WeatherModel extends Weather {
           weatherDescription: '',
           weatherIcon: '',
           date: DateTime.now(),
+          selectedWeather: false,
         );
 
   WeatherModel copyWith({
@@ -34,6 +36,7 @@ class WeatherModel extends Weather {
     String? weatherDescription,
     String? weatherIcon,
     DateTime? date,
+    bool? selectedWeather,
   }) {
     return WeatherModel(
       locationName: locationName ?? super.locationName,
@@ -45,6 +48,7 @@ class WeatherModel extends Weather {
       weatherDescription: weatherDescription ?? super.weatherDescription,
       weatherIcon: weatherIcon ?? super.weatherIcon,
       date: date ?? super.date,
+      selectedWeather: selectedWeather ?? super.selectedWeather,
     );
   }
 
@@ -58,6 +62,7 @@ class WeatherModel extends Weather {
           weatherDescription: map['weather_description'],
           weatherIcon: map['weather_icon'],
           date: map['date'],
+          selectedWeather: map['selected_weather'],
         );
 
   DataMap toMap() {
@@ -70,6 +75,7 @@ class WeatherModel extends Weather {
       'weather_description': super.weatherDescription,
       'weather_icon': super.weatherIcon,
       'date': super.date,
+      'selected_weather': super.selectedWeather,
     };
   }
 
@@ -83,6 +89,7 @@ class WeatherModel extends Weather {
       weatherDescription: entity.weatherDescription,
       weatherIcon: entity.weatherIcon,
       date: entity.date,
+      selectedWeather: entity.selectedWeather,
     );
   }
 }
