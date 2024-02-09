@@ -17,7 +17,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   })  : _getCurrentWeather = getCurrentWeather,
         _getDailyForecast = getDailyForecast,
         _getHourlyForecast = getHourlyForecast,
-        super(HomeInitial()) {
+        super(const HomeInitial()) {
     on<HomeEvent>((event, emit) {
       emit(const HomeLoading());
     });

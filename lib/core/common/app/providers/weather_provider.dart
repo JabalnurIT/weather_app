@@ -36,7 +36,7 @@ class WeatherProvider extends ChangeNotifier {
     // }
   }
 
-  Weather _currentWeather = Weather.empty();
+  Weather _currentWeather = const Weather.empty();
 
   Weather get currentWeather => _currentWeather;
 
