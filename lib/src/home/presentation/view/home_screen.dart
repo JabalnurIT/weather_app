@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttericon/meteocons_icons.dart';
+import 'package:weather_app/core/utils/core_utils.dart';
 import '../../../../core/common/widgets/main_floating_action_button.dart';
 import '../../../../core/common/widgets/main_navbar.dart';
 import '../../../../core/common/widgets/main_screen_container.dart';
@@ -30,17 +31,34 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is HomeError) {
+          CoreUtils.showSnackBar(context, state.message);
+        } else if (state is CurrentWeatherUpdated) {
+          print(state.weather);
+        } else if (state is DailyForecastUpdated) {
+          print(state.forecast);
+        } else if (state is HourlyForecastUpdated) {
+          print(state.forecast);
+        } else if (state is TemperatureUnitChanged) {
+          print(state.temperatureUnit);
+        }
       },
       builder: (context, state) {
         return MainScreenContainer(
           floatingActionButton: MainFloatingActionButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.refresh_rounded,
-              size: 50,
-              color: Colours.primaryColour,
-            ),
+            onPressed: () {
+              context.read<HomeBloc>().add(const GetCurrentWeatherEvent());
+            },
+            icon: state is HomeLoading
+                ? const CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Colours.primaryColour),
+                  )
+                : const Icon(
+                    Icons.refresh_rounded,
+                    size: 50,
+                    color: Colours.primaryColour,
+                  ),
           ),
           bottomNavigationBar: MainNavbar(
             icons: const [
@@ -48,7 +66,17 @@ class _HomeScreenState extends State<HomeScreen> {
               Meteocons.fahrenheit,
             ],
             onTap: (index) {
-              print(index);
+              if (index == 0) {
+                print('Celcius');
+                context
+                    .read<HomeBloc>()
+                    .add(const ChangeTemperatureUnitEvent('c'));
+              } else {
+                print('Fahrenheit');
+                context
+                    .read<HomeBloc>()
+                    .add(const ChangeTemperatureUnitEvent('f'));
+              }
             },
           ),
           heightSheet: MediaQuery.of(context).size.height * .42,
@@ -71,13 +99,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       selected: false,
                       onTap: () {
                         print('Hourly Forecast');
+                        context
+                            .read<HomeBloc>()
+                            .add(const GetHourlyForecastEvent());
                       },
                     ),
                     ButtonHome(
-                      title: 'Weekly Forecast',
+                      title: 'Dayly Forecast',
                       selected: true,
                       onTap: () {
-                        print('Weekly Forecast');
+                        print('Dayly Forecast');
+                        context
+                            .read<HomeBloc>()
+                            .add(const GetDailyForecastEvent());
                       },
                     ),
                   ],

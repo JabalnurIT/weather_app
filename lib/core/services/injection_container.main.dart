@@ -3,43 +3,49 @@ part of 'injection_container.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  final prefs = await SharedPreferences.getInstance();
   final dio = Dio();
   final api = API();
-  final imagePicker = ImagePicker();
   final geolocator = GeolocatorPlatform.instance;
-  final filePicker = FilePicker.platform;
 
   await _initCore(
-      prefs: prefs,
-      dio: dio,
-      api: api,
-      imagePicker: imagePicker,
-      geolocator: geolocator,
-      filePicker: filePicker);
+    dio: dio,
+    api: api,
+    geolocator: geolocator,
+  );
 
-  await _initScanner();
+  await _initHome();
 }
 
 Future<void> _initCore({
-  required SharedPreferences prefs,
   required Dio dio,
   required API api,
-  required ImagePicker imagePicker,
   required GeolocatorPlatform geolocator,
-  required FilePicker filePicker,
 }) async {
   sl
     ..registerLazySingleton(() => dio)
     ..registerLazySingleton(() => api)
-    ..registerLazySingleton(() => prefs)
-    ..registerLazySingleton(() => imagePicker)
-    ..registerLazySingleton(() => geolocator)
-    ..registerLazySingleton(() => filePicker);
+    ..registerLazySingleton(() => geolocator);
 }
 
-Future<void> _initScanner() async {
-  sl.registerFactory(
-    () => WeatherBloc(),
-  );
+Future<void> _initHome() async {
+  sl
+    ..registerFactory(
+      () => HomeBloc(
+        getCurrentWeather: sl(),
+        getDailyForecast: sl(),
+        getHourlyForecast: sl(),
+      ),
+    )
+    ..registerLazySingleton(() => GetCurrentWeather(sl()))
+    ..registerLazySingleton(() => GetDailyForecast(sl()))
+    ..registerLazySingleton(() => GetHourlyForecast(sl()))
+    ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()))
+    ..registerLazySingleton<HomeRemoteDataSource>(
+      () => HomeRemoteDataSourceImpl(
+        dio: sl(),
+        api: sl(),
+        geolocator: sl(),
+      ),
+    );
+  ;
 }

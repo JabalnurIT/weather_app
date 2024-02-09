@@ -12,7 +12,7 @@ class MainFloatingActionButton extends StatelessWidget {
 
   final Size? size;
   final Function() onPressed;
-  final Icon icon;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
