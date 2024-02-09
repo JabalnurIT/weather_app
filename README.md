@@ -22,5 +22,13 @@ Weather data is fetched from the www.weatherapi.com API to provide users with ac
 - Test-Driven Development: Unit tests are written for critical functions to ensure code reliability and stability.
 - State Management Best Practices: BLoC and Provider patterns are used for efficient state management, following best practices in Flutter development.
 
+## How to Run
+Ensure you have FVM and an emulator set up.
+
+1. Run `flutter pub get` to install dependencies.
+2. Execute `flutter test` to run unit TDD.
+3. Locate the `main.dart` file.
+4. Run the application by pressing the run button in the top right corner of your IDE.
+
 ## Conclusion
 This Flutter Weather App combines the power of Domain-Driven Design, Test-Driven Development, BLoC, Provider, and the www.weatherapi.com API to deliver a robust and user-friendly weather application. With a focus on clean architecture, code quality, and reliability, the app offers accurate weather information while ensuring a seamless user experience.
